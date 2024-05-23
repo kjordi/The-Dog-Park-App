@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies&family=Titillium+Web&display=swap');
+
+.strike {
+  text-decoration: line-through;
+}
+
+td{
+  border: 2px solid black;
+  padding: 5px;
+}
+
+.todo-input{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1rem;
+}
+
+.todoTable-block{
+  margin-top: 1rem;
+}
+
+.pagination-pages{
+  text-align: right;
+}
+
+.pagination-pages > * {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.material-icons{
+  cursor: pointer;
+}
+
+::-ms-input-placeholder{
+  color: #174b46;
+}
+
+::-webkit-input-placeholder{
+  color: #174b46;
+}
+
+::placeholder{
+  color: #174b46;
+}
+
+input {
+  color:#174b46;
+}
+
+h3 {
+  color:#174b46;
+  font-family: 'Rowdies', cursive;
+}
+
+
+body{
+
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.todo-block{
+  border: 2px solid #58aab4;
+  padding: 1rem;
+  border-radius: 20px;
+  color: #0e7280;
+}
+
+@media screen and (max-width: 767px) {
+  /* for mobile or small screen device */
+  #todoTable, .todo-calendar{
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* for tablets or laptops or desktops */
+  .todo-grid-parent{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    column-gap: 1rem;
+  }
+
+  #calendar{
+    position: sticky;
+    top: 0;
+  }
+}
+
+.todo-overlay{
+  width: 100vw;
+  height: 100vh;
+  background-color: #b9b9b9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-100vw);
+  transition: transform 250ms;
+  z-index: 2;
+}
+
+.todo-modal{
+  min-width: 50vw;
+  height: 50vh;
+  /*border: 1px solid green;*/
+  background-color: #6eb8bb;
+}
+
+.todo-modal-close-btn{
+  background-color: rgb(13, 136, 145);
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+}
+
+.slidedIntoView {
+  transform: translateX(0);
+  transition: transform 650ms;
+}
+
+#todoTable tr:nth-child(even) {
+  background-color: #66b3b3;
+}
+
+button{
+  background-color: #54a7a7;
+  color: #0a3b39;
+  border: 2px outset #0f5663;
+}
+
+button:active{
+  border: 2px inset #92cccc;
+}
+
+button:hover{
+  background-color: #66b3b3;
+}
+
+.chevron{
+  transform: translateY(0.4rem);
+}
+
+.itemsPerPage{
+  text-align: right;
+  margin-bottom: 0.5rem;
+}
