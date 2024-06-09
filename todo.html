@@ -1,113 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Dog Park App</title>
-  <meta name="description" content="Help managing daily activities. Be organized.">
-  <link rel="stylesheet" href="todo.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.js"></script>
-  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Dog Park App</title>
+<meta name="description" content="Help managing daily activities. Be organized.">
+<link rel="stylesheet" href="todo.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.js"></script>
+
 <!--
-  <link rel="stylesheet" href="./fullcalendar/main.min.css">
-  <script src="./fullcalendar/main.min.js" defer></script>
+<link rel="stylesheet" href="./fullcalendar/main.min.css">
+<script src="./fullcalendar/main.min.js" defer></script>
 -->
-  <script src="todo.js" defer></script>
+<script src="todo.js" defer></script>
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+</style>
 </head>
-
 <body>
-  <h3>The Dog Park App</h3>
-  <div class="todo-grid-parent">
 
-    <div>
-      <div class="todo-input todo-block">
-        <span>Dog's Name: </span>
-        <input type="text" placeholder="Enter Dog's Name" id="todoInputTextbox">
-        <span>Category: </span>
-        <input type="text" placeholder="Enter Dog's Size" list="categoryList" id="categoryInput">
-        <datalist id="categoryList">
-          <option value="Big"></option>
-          <option value="Intermidiate"></option>
-          <option value="Small"></option>
-        </datalist>
-        <span>Date:</span>
-        <input type="date" id="dateInput">
-        <span>Time:</span>
-        <input type="time" id="timeInput">
-        <span></span>
-        <button id="addBtn">Add</button>
-        <span></span>
-        <button id="sortBtn">Sort by Date</button>
-        <span></span>
-        <label><input type="checkbox" id="shortlistBtn"> Incomplete First </label>
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large"></a>
+    <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+  </div>
+</div>
 
-      </div>
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()"></a>
+</div>
 
-      <div class="todo-block todoTable-block">
-        <div class="itemsPerPage">
-          <span>items per page</span>
-          <select id="itemsPerPageSelectElem">
-            <option>5</option>
-            <option>10</option>
-            <option>20</option>
-          </select>
-        </div>
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
 
-        <table id="todoTable">
-          <tr>
-            <td></td>
-            <td>Date</td>
-            <td>Time</td>
-            <td>Dog's Name</td>
-            <td>
-              <select id="categoryFilter">
-              </select>
-            </td>
-            <td></td>
-          </tr>
-        </table>
-
-        <div class="pagination-pages">
-          
-        </div>
-      </div>
+  <!-- Automatic Slideshow Images -->
+  <div class="mySlides w3-display-container w3-center">
+    <img src="wow2.jpg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <!--<h3>Mokaturi</h3>-->
+      <!--<p><b>The energetic and silly</b></p>-->   
     </div>
-
-    <div class="todo-calendar  todo-block">
-      <div id='calendar'></div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="wow2.jpg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <!--<h3>Aris</h3>-->
+      <!--<p><b>The Alpha</b></p>-->    
     </div>
-
-  </div> <!-- class="todo-grid-parent" -->
-
-  <div class="todo-overlay" id="todo-overlay">
-    <div class="todo-modal" id="todo-modal">
-      <div class="todo-input todo-block">
-        <span>To-do: </span>
-        <input type="text" placeholder="Enter new to-do" id="todo-edit-todo">
-        <span>Category: </span>
-        <input type="text" placeholder="Enter category" list="categoryList" id="todo-edit-category">
-        <datalist id="categoryList">
-          <option value="Big"></option>
-          <option value="Intermidiate"></option>
-          <option value="Small"></option>
-        </datalist>
-        <span>Date:</span>
-        <input type="date" id="todo-edit-date">
-        <span>Time:</span>
-        <input type="time" id="todo-edit-time">
-        <span>Link:</span>
-        <input type="text" id="todo-edit-url">
-        <span></span>
-        <button id="changeBtn">Save Change</button>
-      </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="wow2.jpg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <!--<h3>Galgito</h3>-->
+      <!--<p><b>The curious and shy</b></p>-->    
     </div>
-    <div class="todo-modal-close-btn" id="todo-modal-close-btn">X</div>
   </div>
 
-</body>
+  <!-- The Park Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <h2 class="w3-wide">The Park</h2>
+    <p class="w3-"><i>This park isn't actually a dog park, but it is more often than not used like one. This happens because it has fences all around, one metallic door and plenty of space for the dogs to play. Many dogs from nearby visit it, so it is the ideal place for a dog to exercise and socialize!</i></p>
+  </div>
+    <!--<h3 class="w3-justify w3-center">The park of the neighbourhood</h3>-->
+    <div class="w3-row-padding w3-margin-top">
+      <div class="w3-third">
+        <div class="w3-card w3-hover-greyscale">
+          <img src="unnamed (1).jpg" style="width:100%">
+          <div class="w3-container">
+          </div>
+          <p></p>
+        </div>
+      </div>
+      <div class="w3-third">
+        <div class="w3-card w3-hover-greyscale">
+          <img src="dogs.jpg" style="width:100%">
+        </div>
+      </div>
+      <div class="w3-third">
+        <div class="w3-card w3-hover-greyscale">
+          <img src="many dogs.png" style="width:100%">
+        </div>
+      </div>
+    </div>
+  
 
-</html>
+
+  </div>
+
+    <!-- The Calendar Section-->
+    <div class="w3-container w3-light-grey">
+    <div class="w3-container w3-center">
+      <h3>The Dog Park App</h3>
+    </div>
+    <div class="todo-grid-parent">
+  
+      <div>
+        <div class="todo-input todo-block">
+          <span>Dog's Name: </span>
+          <input type="text" placeholder="Enter Dog's Name" id="todoInputTextbox">
+          <span>Category: </span>
+          <input type="text" placeholder="Enter Dog's Size" list="categoryList" id="categoryInput">
+          <datalist id="categoryList">
+            <option value="Big"></option>
+            <option value="Intermidiate"></option>
+            <option value="Small"></option>
+          </datalist>
+          <span>Date:</span>
+          <input type="date" id="dateInput">
+          <span>Time:</span>
+          <input type="time" id="timeInput">
+          <span></span>
+          <button id="addBtn">Add</button>
+          <span></span>
+          <button id="sortBtn">Sort by Date</button>
+          <span></span>
+          <label><input type="checkbox" id="shortlistBtn"> Latest First </label>
+  
+        </div>
+  
+        <div class="todo-block todoTable-block">
+          <div class="itemsPerPage">
+            <span>items per page</span>
+            <select id="itemsPerPageSelectElem">
+              <option>5</option>
+              <option>10</option>
+              <option>20</option>
+            </select>
+          </div>
+  
+          <table id="todoTable">
+            <tr>
+              <td></td>
+              <td>Date</td>
+              <td>Time</td>
+              <td>Dog's Name</td>
+              <td>
+                <select id="categoryFilter">
+                </select>
+              </td>
+              <td></td>
+            </tr>
+          </table>
+  
+          <div class="pagination-pages">
+            
+          </div>
+        </div>
+      </div>
+  
+      <div class="todo-calendar  todo-block">
+        <div id='calendar'></div>
+      </div>
+  
+    </div> <!-- class="todo-grid-parent" -->
+  
+    <div class="todo-overlay" id="todo-overlay">
+      <div class="todo-modal" id="todo-modal">
+        <div class="todo-input todo-block">
+          <span>To-do: </span>
+          <input type="text" placeholder="Enter new to-do" id="todo-edit-todo">
+          <span>Category: </span>
+          <input type="text" placeholder="Enter category" list="categoryList" id="todo-edit-category">
+          <datalist id="categoryList">
+            <option value="Big"></option>
+            <option value="Intermidiate"></option>
+            <option value="Small"></option>
+          </datalist>
+          <span>Date:</span>
+          <input type="date" id="todo-edit-date">
+          <span>Time:</span>
+          <input type="time" id="todo-edit-time">
+          <span>Link:</span>
+          <input type="text" id="todo-edit-url">
+          <span></span>
+          <button id="changeBtn">Save Change</button>
+        </div>
+      </div>
+      <div class="todo-modal-close-btn" id="todo-modal-close-btn">X</div>
+    </div>
+
+    <div class="w3-panel w3-padding-16">
+      <p></p>
+    </div>  
+    </div>
+
+    <!-- The Contact Section -->
+    <div class="w3-container w3-center w3-teal">
+        <h2 class="w3-wide w3-center">VISIT</h2>
+        <div class="w3-row w3-padding-32">
+          <div class="w3-container w3-center">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d309.94722081682227!2d23.79984677327994!3d38.086077090748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sgr!4v1717940658707!5m2!1sen!2sgr" width="650" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <p></p>
+            <i class="fa fa-map-marker" style="width:30px"></i>Union of Geor. Lira and Mark. Botsari streets, Kifisia, Athens<br>
+          </div>
+        </div>
+      </div>
+      
+    <!-- End Page Content -->
+    </div>
+    
+    <!-- Image of location/map -->
+    <img src="1_park outside.png" class="w3-image w3-hover-greyscale" style="width:100%">
+    
+    <!-- Footer 
+    <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+      <i class="fa fa-facebook-official w3-hover-opacity"></i>
+      <i class="fa fa-instagram w3-hover-opacity"></i>
+      <i class="fa fa-snapchat w3-hover-opacity"></i>
+      <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+      <i class="fa fa-twitter w3-hover-opacity"></i>
+      <i class="fa fa-linkedin w3-hover-opacity"></i>
+      <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    </footer> -->
+    
+    <script>
+    // Automatic Slideshow - change image every 4 seconds
+    var myIndex = 0;
+    carousel();
+    
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+      }
+      myIndex++;
+      if (myIndex > x.length) {myIndex = 1}    
+      x[myIndex-1].style.display = "block";  
+      setTimeout(carousel, 4000);    
+    }
+    
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function myFunction() {
+      var x = document.getElementById("navDemo");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else { 
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    var modal = document.getElementById('ticketModal');
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+    
+    </body>
+    </html>

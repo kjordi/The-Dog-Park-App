@@ -1,5 +1,8 @@
 todoMain();
 
+
+initMap();
+
 function todoMain() {
   const DEFAULT_OPTION = "Choose category";
 
