@@ -1,3 +1,74 @@
+// Supabase configuration
+const supabaseUrl = 'https://bzbvxhkjicgkxpokufxm.supabase.co';
+const supabaseKey = 'YOUR_PUBLIC_SUPABASE_KEY'; // Replace with your actual public API key
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetchTodos();
+
+    document.getElementById("addBtn").addEventListener("click", async function () {
+        const dogName = document.getElementById("todoInputTextbox").value;
+        const category = document.getElementById("categoryInput").value;
+        const date = document.getElementById("dateInput").value;
+        const time = document.getElementById("timeInput").value;
+
+        const { data, error } = await supabase
+            .from('todos')
+            .insert([
+                { dog_name: dogName, category: category, date: date, time: time }
+            ]);
+
+        if (error) {
+            console.error("Error inserting data:", error);
+        } else {
+            console.log("Data inserted successfully:", data);
+            fetchTodos(); // Refresh the list
+        }
+    });
+});
+
+async function fetchTodos() {
+    const { data, error } = await supabase
+        .from('todos')
+        .select('*');
+
+    if (error) {
+        console.error("Error fetching data:", error);
+    } else {
+        console.log("Data fetched successfully:", data);
+        renderTodos(data);
+    }
+}
+
+function renderTodos(todos) {
+    const todoTable = document.getElementById("todoTable");
+    todoTable.innerHTML = `
+        <tr>
+            <td></td>
+            <td>Date</td>
+            <td>Time</td>
+            <td>Dog's Name</td>
+            <td>
+                <select id="categoryFilter"></select>
+            </td>
+            <td></td>
+        </tr>
+    `;
+
+    todos.forEach(todo => {
+        const row = todoTable.insertRow();
+        row.innerHTML = `
+            <td></td>
+            <td>${todo.date}</td>
+            <td>${todo.time}</td>
+            <td>${todo.dog_name}</td>
+            <td>${todo.category}</td>
+            <td></td>
+        `;
+    });
+}
+
+
 todoMain();
 
 
