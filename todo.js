@@ -4,6 +4,7 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 document.addEventListener("DOMContentLoaded", function () {
+    initializeCalendar();
     fetchTodos();
 
     document.getElementById("addBtn").addEventListener("click", async function () {
@@ -68,6 +69,13 @@ function renderTodos(todos) {
     });
 }
 
+function initializeCalendar() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth'
+    });
+    calendar.render();
+}
 
 todoMain();
 
