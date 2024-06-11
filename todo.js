@@ -1,6 +1,6 @@
 // Supabase configuration
 const supabaseUrl = 'https://bzbvxhkjicgkxpokufxm.supabase.co';
-const supabaseKey = 'YOUR_PUBLIC_SUPABASE_KEY'; // Replace with your actual public API key
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ6YnZ4aGtqaWNna3hwb2t1ZnhtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgxMDY3NTUsImV4cCI6MjAzMzY4Mjc1NX0.ZaS4PXLcqx_HgKPc6sy1J-bsU9gGpA-_PmPaiNBPJmE'; // Replace with your actual public API key
 const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 document.addEventListener("DOMContentLoaded", function () {
