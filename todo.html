@@ -33,38 +33,6 @@ body {font-family: "Lato", sans-serif}
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.27.0/dist/umd/supabase.min.js"></script>
 </head>
 <body>
-
-  <!-- chatgpt backend solution below-->
-  <div id="content"></div>
-  <button id="updateButton">Update</button>
-
-  <script>
-    // Your Supabase config
-    const supabaseUrl = 'https://bzbvxhkjicgkxpokufxm.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ6YnZ4aGtqaWNna3hwb2t1ZnhtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgxMDY3NTUsImV4cCI6MjAzMzY4Mjc1NX0.ZaS4PXLcqx_HgKPc6sy1J-bsU9gGpA-_PmPaiNBPJmE';
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-    // Update data
-    document.getElementById('updateButton').addEventListener('click', async () => {
-        const { data, error } = await supabase
-            .from('data')
-            .upsert({ id: 1, exampleKey: 'exampleValue' });
-        if (error) console.error(error);
-        else console.log('Update successful');
-    });
-
-    // Fetch data
-    async function fetchData() {
-        const { data, error } = await supabase
-            .from('data')
-            .select('*')
-            .eq('id', 1);
-        if (error) console.error(error);
-        else document.getElementById('content').innerText = JSON.stringify(data[0]);
-    }
-
-    fetchData();
-</script>
   
 <!-- Navbar -->
 <div class="w3-top">
@@ -233,6 +201,38 @@ body {font-family: "Lato", sans-serif}
       <p></p>
     </div>  
     </div>
+
+      <!-- chatgpt backend solution below-->
+  <div id="content"></div>
+  <button id="updateButton">Update</button>
+
+  <script>
+    // Your Supabase config
+    const supabaseUrl = 'https://bzbvxhkjicgkxpokufxm.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ6YnZ4aGtqaWNna3hwb2t1ZnhtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgxMDY3NTUsImV4cCI6MjAzMzY4Mjc1NX0.ZaS4PXLcqx_HgKPc6sy1J-bsU9gGpA-_PmPaiNBPJmE';
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    // Update data
+    document.getElementById('updateButton').addEventListener('click', async () => {
+        const { data, error } = await supabase
+            .from('data')
+            .upsert({ id: 1, exampleKey: 'exampleValue' });
+        if (error) console.error(error);
+        else console.log('Update successful');
+    });
+
+    // Fetch data
+    async function fetchData() {
+        const { data, error } = await supabase
+            .from('data')
+            .select('*')
+            .eq('id', 1);
+        if (error) console.error(error);
+        else document.getElementById('content').innerText = JSON.stringify(data[0]);
+    }
+
+    fetchData();
+</script>
 
     <!-- The Contact Section -->
     <div class="w3-container w3-center w3-teal">
